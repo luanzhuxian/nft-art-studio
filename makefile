@@ -1,8 +1,11 @@
 transform:
 	npx babel ignition/modules/Lock.js --out-file ignition/modules/Lock2.cjs
 
-hardhat-test:
+hnode:
+	npx hardhat node
+
+htest:
 	npx hardhat test
  
-hardhat-deploy:
+hdeploy:
 	npx hardhat ignition deploy ./ignition/modules/Lock.cjs --network localhost
