@@ -5,6 +5,7 @@ export type Nft = {
   descriptipn: string;
   imageUri: string;
 };
+
 export type NftMeta = {
   name: string;
   descriptipn: string;

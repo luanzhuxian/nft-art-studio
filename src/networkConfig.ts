@@ -1,4 +1,4 @@
-const { CONTRACT_ADDRESS } = import.meta.env;
+const { VITE_CONTRACT_ADDRESS } = import.meta.env;
 
 // TODO: 切换网络功能
 
@@ -23,7 +23,7 @@ type NetworkConfiguration = {
 const confs: NetworkConfiguration[] = [
   {
     chainId: 0x7a69, // 31337
-    nftAddress: CONTRACT_ADDRESS,
+    nftAddress: VITE_CONTRACT_ADDRESS,
     params: [
       {
         chainId: '0x7A69',
@@ -40,7 +40,7 @@ const confs: NetworkConfiguration[] = [
   },
   {
     chainId: 0x539,
-    nftAddress: CONTRACT_ADDRESS,
+    nftAddress: VITE_CONTRACT_ADDRESS,
     params: [
       {
         chainId: '0x0539',
@@ -63,4 +63,9 @@ export const configuration = () => confs[current];
 
 export const rpcUrl = () => {
   return confs[current].params[0].rpcUrls[0];
+};
+
+export const IPFS = {
+  RPC_API_ADDRESS: 'http://127.0.0.1:5001',
+  GATEWAY: 'http://127.0.0.1:8080/ipfs/',
 };

@@ -9,7 +9,7 @@ export const connectOnce = async () => {
   // 请求用户授权访问以太坊账户
   await window.ethereum.request({ method: 'eth_requestAccounts' });
   const provider = new ethers.BrowserProvider(window.ethereum);
-  //   await provider.send('eth_requestAccounts', []);
+  // await provider.send('eth_requestAccounts', []);
   const [signer, network] = await Promise.all([provider.getSigner(), provider.getNetwork()]);
   const address = await signer.getAddress();
   return { chainId: network.chainId, address: address, provider, signer };
