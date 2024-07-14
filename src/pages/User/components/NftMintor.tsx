@@ -1,26 +1,23 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Checkbox, Form, Input, Upload } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { Button, Input } from 'antd';
 
 import { addToIpfs } from '@src/services/ipfs-service';
 import { messageBox } from '@src/services/message-service';
-// import { toArweave, imageToArweave } from '@src/services/arweave-query-api';
 import { mintNFT } from '@src/services/nft-service';
-import type { NftMeta } from '@src/services/types';
+// import { toArweave, imageToArweave } from '@src/services/arweave-query-api';
+import type { NftMeta } from '@src/types';
 import styles from './style.module.css';
-
-// const props = {
-//   name: 'file',
-//   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-//   headers: {
-//     authorization: 'authorization-text',
-//   },
-// };
 
 const NftMintor = () => {
   const navigate = useNavigate();
-  const [meta, updateMeta] = useState<NftMeta>({ name: '', descriptipn: '', imageUri: '' });
+  const [meta, updateMeta] = useState<NftMeta>({
+    name: '',
+    descriptipn: '',
+    imageUri: '',
+    uri: '',
+    type: 'image',
+  });
   const [uri, setUri] = useState('');
 
   // 上传图片 并存储到ipfs

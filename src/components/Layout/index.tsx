@@ -61,17 +61,17 @@ const sideNavItems: MenuProps['items'] = [
     icon: React.createElement(UserOutlined),
     children: [
       {
-        key: 'article-write',
+        key: 'artical/write',
         label: '写文章',
         icon: React.createElement(EditOutlined),
       },
       {
-        key: 'article-scratch',
+        key: 'artical/scratch',
         label: '草稿',
         icon: React.createElement(FileOutlined),
       },
       {
-        key: 'article-browse',
+        key: 'artical/browse',
         label: '浏览',
         icon: React.createElement(FolderViewOutlined),
       },

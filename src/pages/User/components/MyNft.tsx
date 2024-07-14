@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import NftBrowser from '@src/components/NftBrowser';
-import { owned } from '@src/services/nft-service';
-import type { Nft } from '@src/services/types';
+import { ownedTypedNFT } from '@src/services/nft-service';
+import type { Nft } from '@src/types';
 
 const MyNft = () => {
   const [nfts, setNfts] = useState<Nft[]>([]);
@@ -12,7 +12,7 @@ const MyNft = () => {
   }, []);
 
   const loadNfts = async () => {
-    const ns = await owned(); // 获取当前账户所有 nft meta 信息
+    const ns = await ownedTypedNFT('image'); // 获取当前账户所有 nft meta 信息
     if (ns.success) {
       setNfts(ns.data);
     }

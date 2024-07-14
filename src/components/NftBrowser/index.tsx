@@ -1,6 +1,6 @@
 import { Card } from 'antd';
 import styles from './style.module.css';
-import type { Nft } from '@src/services/types';
+import type { Nft } from '@src/types';
 
 const { Meta } = Card;
 

@@ -69,12 +69,12 @@ contract NFT is ERC721URIStorage, ERC721Enumerable {
         address owner = msg.sender;
         uint balance = balanceOf(owner);
 
-        Token[] memory rst = new Token[](balance);
-        for(uint i = 0; i < rst.length; i++){
+        Token[] memory res = new Token[](balance);
+        for(uint i = 0; i < res.length; i++){
             uint tokenId =  tokenOfOwnerByIndex(owner, i);
-            rst[i].tokenId = tokenId;
-            rst[i].tokenUrl = tokenURI(tokenId);
+            res[i].tokenId = tokenId;
+            res[i].tokenUrl = tokenURI(tokenId);
         }
-        return rst; 
+        return res; 
     }
 }

@@ -27,3 +27,10 @@ npx hardhat test --network localhost
 npx hardhat ignition deploy ./ignition/modules/Lock.js --network localhost
 
 ```
+
+启动开发链
+部署合约
+保存合约地址
+启动ipfs
+启动项目
+钱包连接本地hardhat开发链
