@@ -5,7 +5,7 @@ import { Button, Input } from 'antd';
 import { addToIpfs } from '@src/services/ipfs-service';
 import { messageBox } from '@src/services/message-service';
 import { mintNFT } from '@src/services/nft-service';
-// import { toArweave, imageToArweave } from '@src/services/arweave-query-api';
+import { storeMetadata, storeNftImage } from '@src/services/arweave-service';
 import type { NftMeta } from '@src/types';
 import styles from './style.module.css';
 
@@ -20,26 +20,29 @@ const NftMintor = () => {
   });
   const [uri, setUri] = useState('');
 
-  // 上传图片 并存储到ipfs
+  // 上传图片 并存储到 ipfs / arweave
   const upLoadToIpfs = async (file) => {
     try {
-      //   const imageuri = await imageToArweave(file);
-      const imageuri = await addToIpfs(file);
+      const imageuri = await storeNftImage(file);
+      // const imageuri = await addToIpfs(file);
       messageBox('success', '', imageuri);
       setUri(imageuri);
       console.log(imageuri);
     } catch (error) {
-      if (error instanceof Error) messageBox('danger', '', error.message);
+      console.error(error);
+      if (error instanceof Error) {
+        messageBox('danger', '', error.message);
+      }
     }
   };
 
-  // 点击铸币
+  // 铸币
   const mint = async () => {
     try {
       const data: NftMeta = { ...meta, imageUri: uri };
       const json = JSON.stringify(data);
-      //   const metauri = await toArweave(json);
-      const metauri = await addToIpfs(json); // 发送到去中心化 ipfs
+      const metauri = await storeMetadata(json); // 发送到 arweave
+      // const metauri = await addToIpfs(json); // 发送到去中心化存储 ipfs
       messageBox('success', '', metauri);
       const { success, tokenId } = await mintNFT(metauri); // 发起合约交易
       if (success && tokenId) {

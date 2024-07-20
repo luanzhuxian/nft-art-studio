@@ -9,32 +9,25 @@ const ipfs = ipfsHttpClient({ url: IPFS.RPC_API_ADDRESS });
 // const helia = await createHelia();
 // const j = json(helia);
 
-export const storeMeta = async (data) => {
-  const json = JSON.stringify(data);
-  alert(json);
-  try {
-    const added = await ipfs.add(json);
-    alert(added.path);
-  } catch (error) {
-    alert(error);
-  }
-};
-
-// export const storeMeta = async (data) => {
-//   try {
-//     const myImmutableAddress = await j.add(data);
-//     alert(myImmutableAddress);
-//   } catch (error) {
-//     alert(error);
-//   }
-// };
-
 // entity 为上传的文件
 export const addToIpfs = async (entity): Promise<string> => {
   const added = await ipfs.add(entity);
   const cid = added.path;
   const res = IPFS.GATEWAY + cid;
+  alert(res);
   return res;
+};
+
+export const storeMetadata = async (data) => {
+  return await addToIpfs(data);
+};
+
+export const storeNftImage = async (data) => {
+  return await addToIpfs(data);
+};
+
+export const storeNftArticle = async (data) => {
+  return await addToIpfs(data);
 };
 
 export const readArtical = async (uri: string): Promise<string> => {

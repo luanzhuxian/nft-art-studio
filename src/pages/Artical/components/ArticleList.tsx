@@ -1,11 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Table } from 'antd';
-import { myArticles } from '@src/services/arweave-service';
-
-// import { readArtical } from '@src/services/ipfs-service';
 import { ownedTypedNFT } from '@src/services/nft-service';
-import { Nft } from '@src/types';
+import { myArticles } from '@src/services/arweave-service';
 
 const columns = [
   {
@@ -72,12 +69,14 @@ function ArticleList() {
   // };
 
   const navigate = useNavigate();
+
   const loadArticles = useCallback(async () => {
     const { success, data } = await ownedTypedNFT('article');
     const articals = data.map((e, i) => ({ key: i, index: i, entity: e, ...e }));
     console.log('articals', articals);
     setArticles(articals);
   }, []);
+
   // const view = async (entity, event) => {
   //   // 从ipfs取文章内容
   //   const content = await readArticle(entity.uri);

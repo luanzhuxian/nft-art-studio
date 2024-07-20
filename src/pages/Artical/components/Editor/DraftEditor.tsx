@@ -7,7 +7,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import 'react-quill/dist/quill.snow.css';
 import '@wangeditor/editor/dist/css/style.css';
 
-// import { storeArticle } from '@src/services/arweave-service';
+import { storeNftArticle } from '@src/services/arweave-service';
 
 const { Content, Footer } = Layout;
 
@@ -59,9 +59,8 @@ export default function ArticleEditorDraft() {
   async function publishPost() {
     // turn the state to html
     const html = draftToHtml(convertToRaw(editorState.getCurrentContent())); //self-contained markdown ...
-    const tags = { 'Content-Type': 'text/html', 'Domain-Type': 'article', title: title };
-    // const url = await storeArticle(html, tags);
-    // alert(url);
+    const url = await storeNftArticle(title, html);
+    alert(url);
   }
 
   return (

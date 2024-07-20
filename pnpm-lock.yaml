@@ -32,6 +32,9 @@ dependencies:
   arweave:
     specifier: ^1.15.1
     version: 1.15.1
+  arweave-wallet-connector:
+    specifier: ^1.0.2
+    version: 1.0.2
   axios:
     specifier: ^1.7.2
     version: 1.7.2
@@ -68,6 +71,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.24.0
     version: 6.24.0(react-dom@18.3.1)(react@18.3.1)
+  use-arconnect:
+    specifier: ^1.0.1
+    version: 1.0.1(react@18.3.1)
 
 devDependencies:
   '@babel/cli':
@@ -8689,6 +8695,16 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /arweave-wallet-connector@1.0.2:
+    resolution: {integrity: sha512-k+TOqhcJC7z6T6+FaxTYWIHek/WRMr5p8ZeLyvBBJAtDL7KI4UmR8V5wgY9lcSWpQirEwveD1Fzahzu9ktAUAw==}
+    dependencies:
+      open: 8.4.2
+      ws: 8.17.1
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
   /arweave@1.15.1:
     resolution: {integrity: sha512-rT7FOwqdudd5npqp4xOYdDT2035LtpcqePjwirh4wjRiEtVsz1FZkRiM2Yj+fOAwYzOm/hNG0GDOipDSaiEGGQ==}
     engines: {node: '>=18'}
@@ -9988,6 +10004,11 @@ packages:
       es-define-property: 1.0.0
       es-errors: 1.3.0
       gopd: 1.0.1
+
+  /define-lazy-prop@2.0.0:
+    resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==}
+    engines: {node: '>=8'}
+    dev: false
 
   /define-properties@1.2.1:
     resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
@@ -14328,6 +14349,15 @@ packages:
       is-wsl: 2.2.0
     dev: false
 
+  /open@8.4.2:
+    resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      define-lazy-prop: 2.0.0
+      is-docker: 2.2.1
+      is-wsl: 2.2.0
+    dev: false
+
   /optionator@0.8.3:
     resolution: {integrity: sha512-+IW9pACdk3XWmmTXG8m3upGUJst5XRGzxMRjXzAuJ1XnIFNvfhjjIuYkDvysnPQ7qzqVzLt78BCruntqRhWQbA==}
     engines: {node: '>= 0.8.0'}
@@ -17741,6 +17771,14 @@ packages:
     dependencies:
       punycode: 1.4.1
       qs: 6.12.1
+    dev: false
+
+  /use-arconnect@1.0.1(react@18.3.1):
+    resolution: {integrity: sha512-yOIE1TRVuUKfFzIS+jACkc0sM9qYl02AzdBATzHttdu03YmbinKiq0FSIzEXkRtKkvu1PJNVu+jjLDlABcUTug==}
+    peerDependencies:
+      react: ^17.0.1
+    dependencies:
+      react: 18.3.1
     dev: false
 
   /use-callback-ref@1.3.2(@types/react@18.3.3)(react@18.3.1):

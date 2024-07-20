@@ -34,3 +34,8 @@ npx hardhat ignition deploy ./ignition/modules/Lock.js --network localhost
 启动ipfs
 启动项目
 钱包连接本地hardhat开发链
+
+启动arweave本地开发链
+npx arlocal
+钱包连接开发链
+给钱包分配测试币+挖矿完成交易

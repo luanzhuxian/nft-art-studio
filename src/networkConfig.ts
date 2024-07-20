@@ -69,3 +69,9 @@ export const IPFS = {
   RPC_API_ADDRESS: 'http://127.0.0.1:5001',
   GATEWAY: 'http://127.0.0.1:8080/ipfs/',
 };
+export const ARWEAVE = {
+  HOST: '127.0.0.1',
+  PORT: 1984,
+  PROTOCOL: 'http',
+  ADDRESS: 'http://127.0.0.1:1984/',
+};

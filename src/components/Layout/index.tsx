@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Layout as AntLayout, Menu, Breadcrumb, Button, theme } from 'antd';
+import { Layout as AntLayout, Menu, Breadcrumb, theme } from 'antd';
 import {
   AppstoreOutlined,
   ShopOutlined,
@@ -15,7 +15,7 @@ import {
   PropertySafetyOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import Connect from '../Connect';
+import Connector from '../Connector';
 import styles from './style.module.css';
 
 const { Header, Content, Sider } = AntLayout;
@@ -201,7 +201,7 @@ const Layout: React.FC<React.PropsWithChildren> = (props) => {
           onClick={onClick}
           style={{ flex: 1, minWidth: 0 }}
         />
-        <Connect></Connect>
+        <Connector />
       </Header>
       <AntLayout className="h-full">
         <Sider width={200} style={{ background: colorBgContainer }}>

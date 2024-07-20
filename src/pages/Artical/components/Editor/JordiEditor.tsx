@@ -2,10 +2,15 @@ import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout, theme, Button, Space, Input } from 'antd';
 import JoditEditor from 'jodit-react';
-import { storeArticle } from '@src/services/arweave-service';
-
-import { addToIpfs } from '@src/services/ipfs-service';
+import {
+  storeMetadata as storeMetadataToIpfs,
+  storeNftArticle as storeNftArticleToIpfs,
+} from '@src/services/ipfs-service';
 import { mintNFT } from '@src/services/nft-service';
+import {
+  storeMetadata as storeMetadataToArw,
+  storeNftArticle as storeNftArticleToArw,
+} from '@src/services/arweave-service';
 import { messageBox } from '@src/services/message-service';
 
 const { Content, Footer } = Layout;
@@ -70,10 +75,12 @@ const Editor = () => {
   const publishPost = async () => {
     try {
       // 发送到去中心化设施 ipfs
-      const uri = await addToIpfs(content); // 得到 文章uri
+      const uri = await storeNftArticleToArw(title, content);
+      // const uri = await storeNftArticleToIpfs(content); // 得到 文章uri
       const meta = { name: title, description: title, type: 'article', uri };
       const entity = JSON.stringify(meta);
-      const tokenURI = await addToIpfs(entity); // 得到 meta uri
+      const tokenURI = await storeMetadataToArw(entity);
+      // const tokenURI = await storeMetadataToIpfs(entity); // 得到 meta uri
       const { success, tokenId } = await mintNFT(tokenURI); // 发起合约交易
       if (success && tokenId) {
         messageBox('success', '', tokenId?.toString());
@@ -89,14 +96,13 @@ const Editor = () => {
     }
   };
 
-  const publishPost2 = async () => {
-    console.log(content);
-    const html = content;
-    // draftToHtml(convertToRaw(editorState.getCurrentContent()))//self-contained markdown ...
-    const tags = { 'Content-Type': 'text/html', 'Domain-Type': 'article', title: title };
-    const url = await storeArticle(html, tags);
-    console.log(url);
-  };
+  // const publishPost2 = async () => {
+  //   console.log(content);
+  //   const html = content;
+  //   // draftToHtml(convertToRaw(editorState.getCurrentContent()))//self-contained markdown ...
+  //   const url = await storeNftArticleToArw(title, html);
+  //   console.log(url);
+  // };
 
   const savePost = () => {};
 
